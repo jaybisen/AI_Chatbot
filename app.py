@@ -296,7 +296,7 @@ with left_col:
         st.session_state.todos = []
         st.session_state.docs = []
         st.session_state.next_doc_id = 1
-       st.rerun()
+        st.rerun()
 
     st.markdown("**Quick tool buttons (manual):**")
     if st.button("List Todos (manual)"):
@@ -411,4 +411,5 @@ with right_col:
     st.markdown("---")
     st.write("- The app runs local tools even if the model is unavailable.")
     st.write("- To enable model replies: install `google-genai` and set `GEMINI_API_KEY` in your environment.")
+
 
