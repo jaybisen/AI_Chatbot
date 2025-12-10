@@ -296,21 +296,20 @@ with left_col:
         st.session_state.todos = []
         st.session_state.docs = []
         st.session_state.next_doc_id = 1
-        st.experimental_rerun()
+       st.rerun()
 
     st.markdown("**Quick tool buttons (manual):**")
     if st.button("List Todos (manual)"):
         res = tool_list_todos()
         st.session_state.chat_history.append({"role":"tool","tool_name":"list_todos","content":res})
-        st.experimental_rerun()
-
+        st.rerun()
     if st.button("Show Documents (manual)"):
         if not st.session_state.docs:
             res = "No documents uploaded."
         else:
             res = "\n".join([f"- id={d['id']} name={d['name']}" for d in st.session_state.docs])
         st.session_state.chat_history.append({"role":"tool","tool_name":"list_docs","content":res})
-        st.experimental_rerun()
+        st.rerun()
 
 with mid_col:
     st.header("Conversation")
@@ -380,7 +379,7 @@ with right_col:
             res = add_document(name, text_content)
             st.session_state.chat_history.append({"role":"tool","tool_name":"upload_doc","content":res})
             st.success(res)
-        st.experimental_rerun()
+        st.rerun()
 
     st.markdown("---")
     st.markdown("**Search uploaded documents**")
@@ -399,7 +398,7 @@ with right_col:
                     lines.append(f"(id={d['id']}) {d['name']}:\n{snippet}")
                 res = "\n\n".join(lines)
             st.session_state.chat_history.append({"role":"tool","tool_name":"search_docs_manual","content":res})
-            st.experimental_rerun()
+            st.rerun()
 
     st.markdown("---")
     st.markdown("**Current uploaded documents**")
@@ -412,3 +411,4 @@ with right_col:
     st.markdown("---")
     st.write("- The app runs local tools even if the model is unavailable.")
     st.write("- To enable model replies: install `google-genai` and set `GEMINI_API_KEY` in your environment.")
+
