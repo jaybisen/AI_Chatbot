@@ -379,7 +379,7 @@ with right_col:
             res = add_document(name, text_content)
             st.session_state.chat_history.append({"role":"tool","tool_name":"upload_doc","content":res})
             st.success(res)
-        st.rerun()
+       
 
     st.markdown("---")
     st.markdown("**Search uploaded documents**")
@@ -411,5 +411,6 @@ with right_col:
     st.markdown("---")
     st.write("- The app runs local tools even if the model is unavailable.")
     st.write("- To enable model replies: install `google-genai` and set `GEMINI_API_KEY` in your environment.")
+
 
 
